@@ -51,6 +51,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text("Simple Stepper Demo")),
       body: Container(
         child: Stepper(
+          controlsBuilder: (BuildContext context, { VoidCallback onStepContinue, VoidCallback onStepCancel }){
+            return Row(
+              children: [
+                Container(
+                  color: Colors.blueAccent,
+                  child: FlatButton(
+                      onPressed:onStepContinue , child: Text("Next")),
+                ),
+                FlatButton(
+                    onPressed:onStepCancel , child: Text("Back"))
+              ],
+            );
+
+          } ,
           currentStep: this.current_step,
           steps: steps,
           type: StepperType.vertical,
